@@ -1,0 +1,11 @@
+/Basics/.vs/*
+/*/*/obj/*
+/*/*/bin/*
+.idea
+/.vs/*
+*.cache
+*/**/obj/*
+*/**/bin/*
+
+/**/.vs/*
+/**/packages/*
