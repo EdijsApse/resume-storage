@@ -5,7 +5,10 @@
 }
 
 <div cllas="page">
-    <h1 class="page-title">List of CV's</h1>
+    <div class="page-header d-flex justify-content-between align-items-center">
+        <h1 class="page-title">List of CV's</h1>
+        <a asp-controller="BasicProfile" asp-action="Create" class="btn btn-primary">Add Basic Profile</a>
+    </div>
     <div class="page-content">
         <table class="table table-stripped">
             <thead>
@@ -27,6 +30,7 @@
                         <td>@basicProfile.Email</td>
                         <td>
                             <div class="btn-group">
+                                <a class="btn btn-sm btn-primary" asp-controller="BasicProfile" asp-action="View" asp-route-id="@basicProfile.Id">View</a>
                                 <a class="btn btn-sm btn-success" asp-controller="BasicProfile" asp-action="Edit" asp-route-id="@basicProfile.Id">Edit</a>
                                 <form method="POST" asp-controller="BasicProfile" asp-action="Delete" asp-route-id="@basicProfile.Id">
                                     <button class="btn btn-sm btn-danger">Delete</button>

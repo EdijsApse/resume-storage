@@ -49,6 +49,7 @@ namespace ResumeStorage.Services
         public void Update<T>(T entity) where T : Entity
         {
             _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

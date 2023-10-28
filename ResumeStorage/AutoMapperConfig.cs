@@ -11,6 +11,7 @@ namespace ResumeStorage
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<BasicProfile, BasicProfileViewModel>();
+                cfg.CreateMap<BasicProfileViewModel, BasicProfile>();
             });
 
             // only during development, validate your mappings; remove it before release

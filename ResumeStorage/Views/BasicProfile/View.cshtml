@@ -1,0 +1,21 @@
+﻿@model BasicProfileViewModel
+
+@{
+    ViewData["Title"] = "View CV";
+}
+
+<div cllas="page">
+    <div class="page-header d-flex justify-content-between align-items-center">
+        <h1 class="page-title">@Model.FullName - CV</h1>
+        <a asp-controller="BasicProfile" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Update</a>
+    </div>
+    <div class="page-content">
+        <div class="section basic-profile-section">
+            <h2>@Model.FullName</h2>
+            <p>@Model.Email</p>
+            <p>@Model.Phone</p>
+            <p>@Model.DisplayDate</p>
+            <p>@Model.Location</p>
+        </div>
+    </div>
+</div>
