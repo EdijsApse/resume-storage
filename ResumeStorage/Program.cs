@@ -47,7 +47,7 @@ namespace ResumeStorage
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Resume}/{action=Index}");
 
             app.Run();
         }

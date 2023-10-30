@@ -1,0 +1,41 @@
+﻿@model ExperienceViewModel
+
+<div class="experience-form-item d-none" id="cloneable">
+    <button class="btn btn-danger btn-sm ms-auto d-block remove-button" type="button">Delete</button>
+    <input asp-for="Id" hidden />
+
+    <input asp-for="BasicProfileId" hidden />
+
+    <span asp-validation-for="BasicProfileId" class="text-danger"></span>
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="Jobtitle" class="form-label"></label>
+            <input asp-for="Jobtitle" class="form-control" />
+            <span asp-validation-for="Jobtitle" class="text-danger"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="Employer" class="form-label"></label>
+            <input asp-for="Employer" class="form-control" />
+            <span asp-validation-for="Employer" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="DateFrom" class="form-label"></label>
+            <input asp-for="DateFrom" class="form-control" type="date" />
+            <span asp-validation-for="DateFrom" class="text-danger"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="DateTo" class="form-label"></label>
+            <input asp-for="DateTo" class="form-control" type="date" />
+            <span asp-validation-for="DateTo" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+</div>

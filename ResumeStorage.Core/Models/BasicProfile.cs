@@ -35,5 +35,7 @@ namespace ResumeStorage.Core.Models
 
         [MaxLength(25)]
         public string? ApartmentNumber { get; set; }
+
+        public List<Experience> ExperiencesList { get; set; }
     }
 }

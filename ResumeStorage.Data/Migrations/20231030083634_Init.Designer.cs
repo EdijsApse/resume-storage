@@ -12,7 +12,7 @@ using ResumeStorage.Data;
 namespace ResumeStorage.Data.Migrations
 {
     [DbContext(typeof(ResumeDbContext))]
-    [Migration("20231028200258_Init")]
+    [Migration("20231030083634_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,12 +128,17 @@ namespace ResumeStorage.Data.Migrations
             modelBuilder.Entity("ResumeStorage.Core.Models.Experience", b =>
                 {
                     b.HasOne("ResumeStorage.Core.Models.BasicProfile", "BasicProfile")
-                        .WithMany()
+                        .WithMany("ExperiencesList")
                         .HasForeignKey("BasicProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BasicProfile");
+                });
+
+            modelBuilder.Entity("ResumeStorage.Core.Models.BasicProfile", b =>
+                {
+                    b.Navigation("ExperiencesList");
                 });
 #pragma warning restore 612, 618
         }

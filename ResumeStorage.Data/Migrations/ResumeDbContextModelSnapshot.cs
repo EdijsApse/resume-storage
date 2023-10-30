@@ -126,12 +126,17 @@ namespace ResumeStorage.Data.Migrations
             modelBuilder.Entity("ResumeStorage.Core.Models.Experience", b =>
                 {
                     b.HasOne("ResumeStorage.Core.Models.BasicProfile", "BasicProfile")
-                        .WithMany()
+                        .WithMany("ExperiencesList")
                         .HasForeignKey("BasicProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BasicProfile");
+                });
+
+            modelBuilder.Entity("ResumeStorage.Core.Models.BasicProfile", b =>
+                {
+                    b.Navigation("ExperiencesList");
                 });
 #pragma warning restore 612, 618
         }

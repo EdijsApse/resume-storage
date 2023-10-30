@@ -30,9 +30,8 @@
                         <td>@basicProfile.Email</td>
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-sm btn-primary" asp-controller="BasicProfile" asp-action="View" asp-route-id="@basicProfile.Id">View</a>
-                                <a class="btn btn-sm btn-success" asp-controller="BasicProfile" asp-action="Edit" asp-route-id="@basicProfile.Id">Edit</a>
-                                <form method="POST" asp-controller="BasicProfile" asp-action="Delete" asp-route-id="@basicProfile.Id">
+                                <a class="btn btn-sm btn-primary" asp-controller="Resume" asp-action="View" asp-route-id="@basicProfile.Id">View</a>
+                                <form method="POST" asp-controller="Resume" asp-action="Delete" asp-route-id="@basicProfile.Id">
                                     <button class="btn btn-sm btn-danger">Delete</button>
                                 </form>
                             </div>

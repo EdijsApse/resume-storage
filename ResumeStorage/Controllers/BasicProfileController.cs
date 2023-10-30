@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ResumeStorage.Core.Models;
 using ResumeStorage.Core.Services;
 using ResumeStorage.Models;
@@ -19,13 +18,6 @@ namespace ResumeStorage.Controllers
             _mapper = mapper;
         }
 
-        public IActionResult Index()
-        {
-            var listOfBasicDetails = _basicProfileService.Get().Select(profileDetail => _mapper.Map<BasicProfileViewModel>(profileDetail));
-
-            return View(listOfBasicDetails);
-        }
-
         public IActionResult Create()
         {
             return View();
@@ -37,19 +29,10 @@ namespace ResumeStorage.Controllers
             if (ModelState.IsValid)
             {
                 _basicProfileService.Create(_mapper.Map<BasicProfile>(basicProfile));
-                return RedirectToAction("Index");
+                return Redirect("/Resume/Index");
             }
 
             return View("Create", basicProfile);
-        }
-
-        public IActionResult View(int id)
-        {
-            var basicProfile = _basicProfileService.GetById(id);
-
-            if (basicProfile == null) return NotFound();
-
-            return View(_mapper.Map<BasicProfileViewModel>(basicProfile));
         }
 
         public IActionResult Edit(int id)
@@ -69,7 +52,7 @@ namespace ResumeStorage.Controllers
             {
                 _basicProfileService.Update(_mapper.Map<BasicProfile>(basicProfile));
 
-                return RedirectToAction("View", new { id = basicProfile.Id });
+                return Redirect($"/Resume/View/{basicProfile.Id}");
             }
 
             return View("Edit", basicProfile);

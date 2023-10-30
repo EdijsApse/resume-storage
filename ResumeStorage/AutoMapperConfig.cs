@@ -11,7 +11,11 @@ namespace ResumeStorage
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<BasicProfile, BasicProfileViewModel>();
-                cfg.CreateMap<BasicProfileViewModel, BasicProfile>();
+
+                cfg.CreateMap<BasicProfile, ResumeViewModel>();
+
+                cfg.CreateMap<BasicProfileViewModel, BasicProfile>()
+                .ForMember(dest => dest.ExperiencesList, opt => opt.Ignore());
 
                 cfg.CreateMap<Experience, ExperienceViewModel>();
 

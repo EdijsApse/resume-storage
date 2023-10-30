@@ -18,17 +18,7 @@ namespace ResumeStorage.Controllers
             _mapper = mapper;
         }
 
-        [Route("BasicProfile/{basicProfileId:int}/experience")]
-        public IActionResult Index(int basicProfileId)
-        {
-            var experiences = _experienceService
-                .GetBasicProfileExperiences(basicProfileId)
-                .Select(exp => _mapper.Map<ExperienceViewModel>(exp));
-
-            return View(experiences);
-        }
-
-        [Route("BasicProfile/{basicProfileId:int}/experience/create")]
+        [Route("Resume/{basicProfileId:int}/Experience/Create")]
         public IActionResult Create(int basicProfileId)
         {
             var experiences = _experienceService
@@ -36,25 +26,27 @@ namespace ResumeStorage.Controllers
                 .Select(exp => _mapper.Map<ExperienceViewModel>(exp))
                 .ToList();
 
-            return View(new ExperienceListViewModel { ListOfExperiences = experiences });
+            return View(new ExperienceListViewModel { ListOfExperiences = experiences, ResumeId = basicProfileId });
         }
 
         [HttpPost]
-        [Route("BasicProfile/{basicProfileId:int}/experience/create")]
-        public IActionResult Create(int basicProfileId, List<ExperienceViewModel> listOfExperiences)
+        [Route("Resume/{basicProfileId:int}/Experience/Create")]
+        public IActionResult Store(int basicProfileId, List<ExperienceViewModel> listOfExperiences)
         {
             if (ModelState.IsValid)
             {
-                listOfExperiences.ForEach(exp =>
+                listOfExperiences.ForEach(experience =>
                 {
-                    var mapped = _mapper.Map<Experience>(exp);
-                    _experienceService.Update(mapped);
+                    var mapped = _mapper.Map<Experience>(experience);
+
+                    if (experience.Id == 0) _experienceService.Create(mapped);
+                    else _experienceService.Update(mapped);
                 });
 
-                return RedirectToAction("Index", new { basicProfileId = basicProfileId });
+                return Redirect($"/Resume/View/{basicProfileId}");
             }
 
-            return View(new ExperienceListViewModel { ListOfExperiences = listOfExperiences });
+            return View("Create", new ExperienceListViewModel { ListOfExperiences = listOfExperiences, ResumeId = basicProfileId });
         }
     }
 }
