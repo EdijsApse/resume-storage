@@ -1,4 +1,3 @@
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ResumeStorage.Core.Services;
 using ResumeStorage.Data;
@@ -26,6 +25,8 @@ namespace ResumeStorage
             builder.Services.AddTransient<IResumeDbContext, ResumeDbContext>();
 
             builder.Services.AddTransient<IBasicProfileService, BasicProfileService>();
+
+            builder.Services.AddTransient<IExperienceService, ExperienceService>();
 
             var app = builder.Build();
 

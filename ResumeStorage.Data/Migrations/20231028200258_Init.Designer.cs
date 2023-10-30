@@ -12,7 +12,7 @@ using ResumeStorage.Data;
 namespace ResumeStorage.Data.Migrations
 {
     [DbContext(typeof(ResumeDbContext))]
-    [Migration("20231027105227_Init")]
+    [Migration("20231028200258_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,6 +85,55 @@ namespace ResumeStorage.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BasicProfiles");
+                });
+
+            modelBuilder.Entity("ResumeStorage.Core.Models.Experience", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BasicProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateTo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Employer")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Jobtitle")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasicProfileId");
+
+                    b.ToTable("Experiences");
+                });
+
+            modelBuilder.Entity("ResumeStorage.Core.Models.Experience", b =>
+                {
+                    b.HasOne("ResumeStorage.Core.Models.BasicProfile", "BasicProfile")
+                        .WithMany()
+                        .HasForeignKey("BasicProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BasicProfile");
                 });
 #pragma warning restore 612, 618
         }

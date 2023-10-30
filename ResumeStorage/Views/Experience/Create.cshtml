@@ -1,0 +1,55 @@
+﻿@model ExperienceListViewModel
+
+@{
+    ViewData["Title"] = "Update List Of Experiences";
+}
+
+<div cllas="page">
+    <h1 class="page-title">Update List Of Experiences</h1>
+    <div class="page-content">
+        <form method="post">
+            @for (var i = 0; i < Model.ListOfExperiences.Count; i++)
+            {
+                <div class="experience-form-item">
+                    <input asp-for="ListOfExperiences[i].Id" hidden />
+
+                    <input asp-for="ListOfExperiences[i].BasicProfileId" hidden />
+
+                    <span asp-validation-for="ListOfExperiences[i].BasicProfileId" class="text-danger"></span>
+                    <div class="row">
+                        <div class="col-6">
+                            <label asp-for="ListOfExperiences[i].Jobtitle" class="form-label"></label>
+                            <input asp-for="ListOfExperiences[i].Jobtitle" class="form-control" />
+                            <span asp-validation-for="ListOfExperiences[i].Jobtitle" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="ListOfExperiences[i].Employer" class="form-label"></label>
+                            <input asp-for="ListOfExperiences[i].Employer" class="form-control" />
+                            <span asp-validation-for="ListOfExperiences[i].Employer" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label asp-for="ListOfExperiences[i].DateFrom" class="form-label"></label>
+                            <input asp-for="ListOfExperiences[i].DateFrom" class="form-control" type="date" />
+                            <span asp-validation-for="ListOfExperiences[i].DateFrom" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="ListOfExperiences[i].DateTo" class="form-label"></label>
+                            <input asp-for="ListOfExperiences[i].DateTo" class="form-control" type="date" />
+                            <span asp-validation-for="ListOfExperiences[i].DateTo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label asp-for="ListOfExperiences[i].Description" class="form-label"></label>
+                            <textarea asp-for="ListOfExperiences[i].Description" class="form-control"></textarea>
+                            <span asp-validation-for="ListOfExperiences[i].Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            }
+            <button class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>

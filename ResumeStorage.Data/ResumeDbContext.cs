@@ -7,6 +7,8 @@ namespace ResumeStorage.Data
     {
         public DbSet<BasicProfile> BasicProfiles { get; set; }
 
+        public DbSet<Experience> Experiences { get; set; }
+
         public ResumeDbContext(DbContextOptions<ResumeDbContext> options) : base(options) { }
     }
 }

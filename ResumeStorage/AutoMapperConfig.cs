@@ -12,6 +12,12 @@ namespace ResumeStorage
             {
                 cfg.CreateMap<BasicProfile, BasicProfileViewModel>();
                 cfg.CreateMap<BasicProfileViewModel, BasicProfile>();
+
+                cfg.CreateMap<Experience, ExperienceViewModel>();
+
+                cfg.CreateMap<ExperienceViewModel, Experience>()
+                .ForMember(dest => dest.BasicProfile, opt => opt.Ignore());
+
             });
 
             // only during development, validate your mappings; remove it before release

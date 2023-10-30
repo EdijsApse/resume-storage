@@ -8,6 +8,8 @@ namespace ResumeStorage.Data
     {
         public DbSet<BasicProfile> BasicProfiles { get; set; }
 
+        public DbSet<Experience> Experiences { get; set; }
+
         int SaveChanges();
 
         DbSet<T> Set<T>() where T : class;
