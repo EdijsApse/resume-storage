@@ -5,15 +5,12 @@ using ResumeStorage.Models;
 
 namespace ResumeStorage.Controllers
 {
-    public class ResumeController : Controller
+    public class ResumeController : BaseController
     {
-        private readonly IMapper _mapper;
-
         private readonly IBasicProfileService _resumeService;
 
-        public ResumeController(IMapper mapper, IBasicProfileService service)
+        public ResumeController(IMapper mapper, IBasicProfileService service) : base(mapper)
         {
-            _mapper = mapper;
             _resumeService = service;
         }
 

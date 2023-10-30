@@ -15,11 +15,17 @@ namespace ResumeStorage
                 cfg.CreateMap<BasicProfile, ResumeViewModel>();
 
                 cfg.CreateMap<BasicProfileViewModel, BasicProfile>()
-                .ForMember(dest => dest.ExperiencesList, opt => opt.Ignore());
+                .ForMember(dest => dest.ExperiencesList, opt => opt.Ignore())
+                .ForMember(dest => dest.EducationsList, opt => opt.Ignore());
 
                 cfg.CreateMap<Experience, ExperienceViewModel>();
 
                 cfg.CreateMap<ExperienceViewModel, Experience>()
+                .ForMember(dest => dest.BasicProfile, opt => opt.Ignore());
+
+                cfg.CreateMap<Education, EducationViewModel>();
+
+                cfg.CreateMap<EducationViewModel, Education>()
                 .ForMember(dest => dest.BasicProfile, opt => opt.Ignore());
 
             });

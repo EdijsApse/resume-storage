@@ -15,6 +15,7 @@ namespace ResumeStorage.Services
         {
             return _context.BasicProfiles
                 .Include(profile => profile.ExperiencesList)
+                .Include(profile => profile.EducationsList)
                 .FirstOrDefault(profile => profile.Id == id);
         }
     }

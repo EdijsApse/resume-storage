@@ -22,8 +22,9 @@ $(document).ready(function ()
 
 function updateNameAndValue() {
     const oldName = $(this).attr("name");
+    const nameOfArray = $("#FieldName").val();
     const listOfItems = $(".form-items-list > div");
-    const newName = `ListOfExperiences[${listOfItems.length}].${oldName}`;
+    const newName = `${nameOfArray}[${listOfItems.length}].${oldName}`;
 
     const isDateInput = $(this).attr('type') == 'date';
 

@@ -9,6 +9,8 @@ namespace ResumeStorage.Data
 
         public DbSet<Experience> Experiences { get; set; }
 
+        public DbSet<Education> Educations { get; set; }
+
         public ResumeDbContext(DbContextOptions<ResumeDbContext> options) : base(options) { }
     }
 }

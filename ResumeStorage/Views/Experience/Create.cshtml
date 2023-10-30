@@ -7,11 +7,12 @@
 <div cllas="page">
     <h1 class="page-title">Update List Of Experiences</h1>
     <div class="page-content">
+        <input type="text" value="ListOfExperiences" id="FieldName" hidden />
         <form method="post" action="/Resume/@Model.ResumeId/Experience/Create">
             <div class="form-items-list">
             @for (var i = 0; i < Model.ListOfExperiences.Count; i++)
             {
-                <div class="experience-form-item">
+                <div class="single-form-item">
                     <button class="btn btn-danger btn-sm ms-auto d-block remove-button" type="button">Delete</button>
                     <input asp-for="ListOfExperiences[i].Id" hidden />
 

@@ -10,6 +10,8 @@ namespace ResumeStorage.Data
 
         public DbSet<Experience> Experiences { get; set; }
 
+        public DbSet<Education> Educations { get; set; }
+
         int SaveChanges();
 
         DbSet<T> Set<T>() where T : class;

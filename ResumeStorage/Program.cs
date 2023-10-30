@@ -28,6 +28,8 @@ namespace ResumeStorage
 
             builder.Services.AddTransient<IExperienceService, ExperienceService>();
 
+            builder.Services.AddTransient<IEducationService, EducationService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

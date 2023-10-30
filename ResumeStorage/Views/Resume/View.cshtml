@@ -53,5 +53,36 @@
                 </table>
             </div>
         </section>
+        <section class="section education-section">
+            <div class="section-header d-flex justify-content-between align-items-center">
+                <h2>Educations</h2>
+                <a href="/Resume/@Model.Id/Education/Create" class="btn btn-primary">Update List Of Educations</a>
+            </div>
+            <div class="section-content">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Name Of School</th>
+                            <th>Field Of Study</th>
+                            <th>Degree</th>
+                            <th>Date From</th>
+                            <th>Date To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var education in Model.EducationsList)
+                        {
+                            <tr>
+                                <td>@education.NameOfSchool</td>
+                                <td>@education.FieldOfStudy</td>
+                                <td>@education.Degree</td>
+                                <td>@education.DateFrom</td>
+                                <td>@education.DateTo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 </div>

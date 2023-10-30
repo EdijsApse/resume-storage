@@ -2,13 +2,15 @@
 
 namespace ResumeStorage.Models
 {
-    public class ExperienceViewModel
+    public class EducationViewModel
     {
         public int Id { get; set; }
 
-        public string Jobtitle { get; set; }
+        [DisplayName("Name Of School")]
+        public string NameOfSchool { get; set; }
 
-        public string Employer { get; set; }
+        [DisplayName("Field Of Study")]
+        public string FieldOfStudy { get; set; }
 
         [DisplayName("Date From")]
         public DateTime DateFrom { get; set; }
@@ -16,7 +18,7 @@ namespace ResumeStorage.Models
         [DisplayName("Date To")]
         public DateTime? DateTo { get; set; }
 
-        public string? Description { get; set; }
+        public string Degree { get; set; }
 
         public int BasicProfileId { get; set; }
     }

@@ -6,16 +6,13 @@ using ResumeStorage.Models;
 
 namespace ResumeStorage.Controllers
 {
-    public class ExperienceController : Controller
+    public class ExperienceController : BaseController
     {
         private readonly IExperienceService _experienceService;
 
-        private readonly IMapper _mapper;
-
-        public ExperienceController(IExperienceService experienceService, IMapper mapper)
+        public ExperienceController(IExperienceService experienceService, IMapper mapper) : base(mapper)
         {
             _experienceService = experienceService;
-            _mapper = mapper;
         }
 
         [Route("Resume/{basicProfileId:int}/Experience/Create")]

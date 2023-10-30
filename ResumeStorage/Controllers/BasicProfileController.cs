@@ -6,16 +6,13 @@ using ResumeStorage.Models;
 
 namespace ResumeStorage.Controllers
 {
-    public class BasicProfileController : Controller
+    public class BasicProfileController : BaseController
     {
         private readonly IBasicProfileService _basicProfileService;
 
-        private readonly IMapper _mapper;
-
-        public BasicProfileController(IBasicProfileService basicProfileService, IMapper mapper)
+        public BasicProfileController(IBasicProfileService basicProfileService, IMapper mapper) : base(mapper)
         {
             _basicProfileService = basicProfileService;
-            _mapper = mapper;
         }
 
         public IActionResult Create()
