@@ -26,6 +26,9 @@ namespace ResumeStorage.Controllers
             if (ModelState.IsValid)
             {
                 _basicProfileService.Create(_mapper.Map<BasicProfile>(basicProfile));
+                
+                TempData["success"] = "Basic Profile details created!";
+
                 return Redirect("/Resume/Index");
             }
 
@@ -48,6 +51,8 @@ namespace ResumeStorage.Controllers
             if (ModelState.IsValid)
             {
                 _basicProfileService.Update(_mapper.Map<BasicProfile>(basicProfile));
+
+                TempData["success"] = "Basic Profile details updated!";
 
                 return Redirect($"/Resume/View/{basicProfile.Id}");
             }

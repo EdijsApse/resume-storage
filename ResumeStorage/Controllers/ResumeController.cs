@@ -39,6 +39,8 @@ namespace ResumeStorage.Controllers
 
             _resumeService.Delete(profile);
 
+            TempData["success"] = "Resume Deleted!";
+
             return RedirectToAction("Index");
         }
     }

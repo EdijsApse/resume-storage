@@ -40,6 +40,8 @@ namespace ResumeStorage.Controllers
                     else _educationService.Update(mapped);
                 });
 
+                TempData["success"] = "List of educations updated!";
+
                 return Redirect($"/Resume/View/{basicProfileId}");
             }
 

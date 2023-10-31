@@ -41,6 +41,8 @@ namespace ResumeStorage.Controllers
                     else _experienceService.Update(mapped);
                 });
 
+                TempData["success"] = "List of experiences updated!";
+
                 return Redirect($"/Resume/View/{basicProfileId}");
             }
 
