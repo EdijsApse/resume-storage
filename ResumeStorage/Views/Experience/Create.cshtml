@@ -7,14 +7,13 @@
 <div cllas="page">
     <h1 class="page-title">Update List Of Experiences</h1>
     <div class="page-content">
-        <input type="text" value="ListOfExperiences" id="FieldName" hidden />
         <form method="post" action="/Resume/@Model.ResumeId/Experience/Create">
             <div class="form-items-list">
             @for (var i = 0; i < Model.ListOfExperiences.Count; i++)
             {
                 <div class="single-form-item">
                     <button class="btn btn-danger btn-sm ms-auto d-block remove-button" type="button">Delete</button>
-                    <input asp-for="ListOfExperiences[i].Id" hidden />
+                        <input asp-for="ListOfExperiences[i].Id" hidden class="item-id" />
 
                     <input asp-for="ListOfExperiences[i].BasicProfileId" hidden />
 
@@ -67,6 +66,11 @@
 
 @section Scripts
 {
+    <script>
+        const DELETE_ENDPOINT = "/Resume/@Model.ResumeId/Experience/Delete";
+        const FIELD_NAME = "ListOfExperiences";
+    </script>
+
     <script src="~/js/AddItem.js" asp-append-version="true"></script>
     <script src="~/js/RemoveItem.js" asp-append-version="true"></script>
 }

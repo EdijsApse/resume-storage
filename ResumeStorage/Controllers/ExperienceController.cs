@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ResumeStorage.Core.Models;
 using ResumeStorage.Core.Services;
 using ResumeStorage.Models;
+using ResumeStorage.Services;
 
 namespace ResumeStorage.Controllers
 {
@@ -44,6 +45,30 @@ namespace ResumeStorage.Controllers
             }
 
             return View("Create", new ExperienceListViewModel { ListOfExperiences = listOfExperiences, ResumeId = basicProfileId });
+        }
+
+        [HttpPost]
+        [Route("Resume/{basicProfileId:int}/Experience/Delete")]
+        public IActionResult Delete(int basicProfileId, int id)
+        {
+            var experience = _experienceService.Query().Where(experience => experience.Id == id && experience.BasicProfileId == basicProfileId).First();
+
+            if (experience == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Experience not found!"
+                });
+            }
+
+            _experienceService.Delete(experience);
+
+            return Ok(new
+            {
+                success = true,
+                message = "List updated!"
+            });
         }
     }
 }

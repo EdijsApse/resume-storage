@@ -45,5 +45,28 @@ namespace ResumeStorage.Controllers
 
             return View("Create", new EducationListViewModel { ListOfEducations = listOfEducations, ResumeId = basicProfileId });
         }
+
+        [HttpPost]
+        [Route("Resume/{basicProfileId:int}/Education/Delete")]
+        public IActionResult Delete(int basicProfileId, int id)
+        {
+            var education = _educationService.Query().Where(education => education.Id == id && education.BasicProfileId == basicProfileId).First();
+
+            if (education == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Education not found!"
+                });
+            }
+
+            _educationService.Delete(education);
+
+            return Ok(new {
+                success = true,
+                message = "List updated!"
+            });
+        }
     }
 }
