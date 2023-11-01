@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BasicProfileViewModel>
+
+@{
+    ViewData["Title"] = "List of CV's";
+}
+
+<div cllas="page">
+    <div class="page-header d-flex justify-content-between align-items-center">
+        <h1 class="page-title">List of CV's</h1>
+        <a asp-controller="BasicProfile" asp-action="Create" class="btn btn-primary">Add Basic Profile</a>
+    </div>
+    <div class="page-content">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var basicProfile in Model)
+                {
+                    <tr>
+                        <td>@basicProfile.Id</td>
+                        <td>@basicProfile.FirstName</td>
+                        <td>@basicProfile.LastName</td>
+                        <td>@basicProfile.Email</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-primary" asp-controller="Resume" asp-action="View" asp-route-id="@basicProfile.Id">View</a>
+                                <form method="POST" asp-controller="Resume" asp-action="Delete" asp-route-id="@basicProfile.Id">
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

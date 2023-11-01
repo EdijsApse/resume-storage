@@ -1,0 +1,88 @@
+﻿@model ResumeViewModel
+
+@{
+    ViewData["Title"] = "View CV";
+}
+
+<div cllas="page">
+    <div class="page-header">
+        <h1 class="page-title">@Model.FullName - CV</h1>
+    </div>
+    <div class="page-content">
+        <section class="section basic-profile-section">
+            <div class="section-header d-flex justify-content-between align-items-center">
+                <h2>Basic Information</h2>
+                <a asp-controller="BasicProfile" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Update Basic Profile Details</a>
+            </div>
+            <div class="section-content">
+                <h2>@Model.FullName</h2>
+                <p>@Model.Email</p>
+                <p>@Model.Phone</p>
+                <p>@Model.DisplayDate</p>
+                <p>@Model.Location</p>
+            </div>
+        </section>
+        <section class="section experience-section">
+            <div class="section-header d-flex justify-content-between align-items-center">
+                <h2>Experiences</h2>
+                <a href="/Resume/@Model.Id/Experience/Create" class="btn btn-primary">Update List Of Experiences</a>
+            </div>
+            <div class="section-content">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Jobtitle</th>
+                            <th>Employer</th>
+                            <th>Date From</th>
+                            <th>Date To</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var experience in Model.ExperiencesList)
+                        {
+                            <tr>
+                                <td>@experience.Jobtitle</td>
+                                <td>@experience.Employer</td>
+                                <td>@experience.DateFrom</td>
+                                <td>@experience.DateTo</td>
+                                <td>@experience.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="section education-section">
+            <div class="section-header d-flex justify-content-between align-items-center">
+                <h2>Educations</h2>
+                <a href="/Resume/@Model.Id/Education/Create" class="btn btn-primary">Update List Of Educations</a>
+            </div>
+            <div class="section-content">
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Name Of School</th>
+                            <th>Field Of Study</th>
+                            <th>Degree</th>
+                            <th>Date From</th>
+                            <th>Date To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var education in Model.EducationsList)
+                        {
+                            <tr>
+                                <td>@education.NameOfSchool</td>
+                                <td>@education.FieldOfStudy</td>
+                                <td>@education.Degree</td>
+                                <td>@education.DateFrom</td>
+                                <td>@education.DateTo</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model EducationViewModel
+
+<div class="single-form-item d-none" id="cloneable">
+    <button class="btn btn-danger btn-sm ms-auto d-block remove-button" type="button">Delete</button>
+    <input asp-for="Id" hidden class="item-id" />
+
+    <input asp-for="BasicProfileId" hidden />
+
+    <span asp-validation-for="BasicProfileId" class="text-danger"></span>
+    <div class="row">
+        <div class="col-4">
+            <label asp-for="NameOfSchool" class="form-label"></label>
+            <input asp-for="NameOfSchool" class="form-control" />
+            <span asp-validation-for="NameOfSchool" class="text-danger"></span>
+        </div>
+        <div class="col-4">
+            <label asp-for="FieldOfStudy" class="form-label"></label>
+            <input asp-for="FieldOfStudy" class="form-control" />
+            <span asp-validation-for="FieldOfStudy" class="text-danger"></span>
+        </div>
+        <div class="col-4">
+            <label asp-for="Degree" class="form-label"></label>
+            <input asp-for="Degree" class="form-control" />
+            <span asp-validation-for="Degree" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="DateFrom" class="form-label"></label>
+            <input asp-for="DateFrom" class="form-control" type="date" />
+            <span asp-validation-for="DateFrom" class="text-danger"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="DateTo" class="form-label"></label>
+            <input asp-for="DateTo" class="form-control" type="date" />
+            <span asp-validation-for="DateTo" class="text-danger"></span>
+        </div>
+    </div>
+</div>
